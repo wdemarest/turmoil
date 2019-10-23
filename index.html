@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="tPXb8rJRA5LFMef9gOHR9Ve0D-ztOHT6uu9_UhVBt9s" />
+<title>Strog Entertainment</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+<style>
+	/* Space out content a bit */
+body {
+  background-color: white; 
+  color: #131313;
+}
+
+.main {
+	NONbackground-image: url(/image/bg.jpg);
+}
+
+.userName {
+	position: relative;
+	display: block;
+	padding: 10px 15px;
+}
+
+a.logo img {
+	height: 60px;
+	visibility: hidden;
+}
+
+a.logo {
+	padding-left: 4px;
+	padding-right: 4px;
+	border-radius: 6px;
+	background: url(/image/strogLogoBlack.png) no-repeat center center;
+	background-size: contain;
+	display: inline-block;
+	transition: all 0.2s ease-out;
+}
+
+a.logo:hover {
+	text-decoration: none;
+	transition: all 0.2s ease-in;
+	background: url(/image/strogLogoBlack.png) no-repeat center center;
+	background-size: contain;
+}
+
+.mainPage h2 {
+	font-family: futura;
+	color: #aaa;
+}
+
+.modal-title, .modal-body, .textBlack {
+  color: black;
+}
+
+.centerContent {
+	text-align: center;
+}
+
+.slide-left {
+	animation: slide-left 1s forwards;
+	opacity: 0;
+}
+
+.gameTitle {
+	font-size: 3vw;
+	margin-top: 80%;
+}
+
+nav a {
+	cursor: pointer;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Custom page header */
+.header {
+	margin-top: 10px;
+	margin-bottom: 20px;
+	border-bottom: 0px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+.ctr {
+	float: none;
+	margin: auto;
+}
+
+</style>
+<script>
+let Cookie = {
+	set: function(name,value,days) {
+		var expires = "";
+		if (days) {
+			var date = new Date();
+			date.setTime(date.getTime() + (days*24*60*60*1000));
+			expires = "; expires=" + date.toUTCString();
+		}
+		document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+	},
+	get: function(name) {
+		var nameEQ = name + "=";
+		var ca = document.cookie.split(';');
+		for(var i=0;i < ca.length;i++) {
+			var c = ca[i];
+			while (c.charAt(0)==' ') c = c.substring(1,c.length);
+			if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+		}
+		return null;
+	},
+	erase: function(name) {   
+		document.cookie = name+'=; Max-Age=-99999999;';  
+	}
+}
+
+function main() {
+	console.log('Starting page.');
+	$('.userName').html( Cookie.get( 'userName' ) );
+	setInterval( ()=>{
+		let a = 1;
+	}, 0.5*1000 );
+}
+
+$(document).ready( main );
+
+</script>
+</head>
+<body>
+<div class="main">
+	<div class="container">
+		<div class="header clearfix">
+			<div class="nav pull-right">
+				<span class="userName"></span>
+			</div>
+			<nav>
+				<ul class="nav nav-pills pull-right">
+					<li role="presentation"><a data-toggle="modal" data-target="#signup-dialog">Signup</a></li>
+					<li role="presentation"><a data-toggle="modal" data-target="#login-dialog">Login</a></li>
+				</ul>
+			</nav>
+			<a class="logo" href="/index.html"><img src="/image/strogLogoBlack.png"></a>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<img src="/image/turmoilHeader.png">
+		</div>
+		<div class="row">
+			<h2>About</h2>
+		</div>
+		<div class="row">
+			<h2>Instructions</h2>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
