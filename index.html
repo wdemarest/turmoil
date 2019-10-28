@@ -118,6 +118,16 @@ nav a {
   font-size: 21px;
 }
 
+.ruleset {
+  background-color: #ddd;
+  padding: 10px 10px;
+  border-radius: 8px;
+}
+
+.ruleset h2{
+  margin-top: 0px;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
@@ -185,12 +195,6 @@ $(document).ready( main );
 			<div class="nav pull-right">
 				<span class="userName"></span>
 			</div>
-			<nav>
-				<ul class="nav nav-pills pull-right">
-					<li role="presentation"><a data-toggle="modal" data-target="#signup-dialog">Signup</a></li>
-					<li role="presentation"><a data-toggle="modal" data-target="#login-dialog">Login</a></li>
-				</ul>
-			</nav>
 			<a class="logo" href="/index.html"><img src="/image/strogLogoBlack.png"></a>
 		</div>
 	</div>
@@ -200,6 +204,20 @@ $(document).ready( main );
 		</div>
 		<div class="row">
 			<h2>Check back soon for the final release!</h2>
+		</div>
+		<div class="ruleset">
+			<h2>Two Player</h2>
+			<h3>Setup</h3>
+			<ul>
+				<li>Take out all green cards</li>
+				<li>Take out all blue specials (swappers, locks, plus ones)</li>
+				<li>The players must be Red and Yellow.</li>
+				<li>Hand size is five cards instead of seven.</li>
+			</ul>
+			<h3>Trading</h3>
+			<div>
+				If at any time you have a card of the other person’s color, immediately give it to them and draw a card.
+			</div>
 		</div>
 	</div>
 </div>
