@@ -7,12 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 <style>
 	/* Space out content a bit */
@@ -71,6 +68,10 @@ a.logo:hover {
 	opacity: 0;
 }
 
+.hidden {
+	display:none;
+}
+
 .gameTitle {
 	font-size: 3vw;
 	margin-top: 80%;
@@ -80,9 +81,19 @@ nav a {
 	cursor: pointer;
 }
 
-#instructionVideo{
+#instructionVideo {
 	margin: 0 auto;
 	width: 560px;
+}
+
+#instructionVideo iframe {
+	width: 100%;
+}
+
+@media (max-width: 560px) {
+	#instructionVideo {
+		width: 100%;
+	}
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -315,6 +326,8 @@ function tickleSubmit() {
 function main() {
 	console.log('Starting page.');
 	$('.userName').html( Cookie.get( 'userName' ) );
+	let width = $('#instructionVideo iframe').width();
+	$('#instructionVideo iframe').css( 'height', width/560*315 );
 	setInterval( ()=>{
 		let a = 1;
 	}, 0.5*1000 );
@@ -334,78 +347,75 @@ $(document).ready( main );
 </head>
 <body>
 <div class="main">
-	<div class="container">
-		<div class="header clearfix">
-			<div class="nav pull-right">
-				<span class="userName"></span>
+	
+	<div class="header clearfix">
+		<div class="nav pull-right">
+			<span class="userName"></span>
+		</div>
+		<a class="logo" href="/index.html"><img src="/image/strogLogoBlack.png"></a>
+	</div>
+	
+	
+	<img id="turmoilHeader" src="/image/turmoilHeader.png">
+	
+	<div class="row" id="instructionVideo">
+		<iframe src="https://www.youtube.com/embed/PLe_KrKwNCg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</div>
+	<br>
+	<div class="row">
+		<h2>If you want to know when the full release happens, enter your email here!</h2>
+		<form class="tickleForm" onsubmit="return tickleSubmit.apply(this,[]);">
+			<fieldset class="tickleFormFields tickleStyle">
+				<input name="userEmail" class="form-bit" autocapitalize="off" placeholder="Your email here" type="text" required>
+				<input name="note" class="form-bit" value="turmoil" type="text" style="display:none;">
+				<button type="submit" class="form-bit">
+				<span><i class="fa fa-refresh fa-spin hidden"></i><i class="fa fa-check"></i></span>
+				</button>
+				<div id="tickleSafeMessage">We won't spam you, or share your email with anyone, ever.</div>
+				<div id="tickleFailMessage"></div>
+			</fieldset>
+		</form>
+		<div id="tickleSuccessMessage">Thanks! We will email you when Turmoil is available!</div>
+	</div>
+	<br>
+	<div class="row">
+		<h1>More Ways to Play</h1>
+	</div>
+	<div class="row ruleset" onclick="toggleVis('duelBody')">
+		<h2>Duel - Two Players</h2>
+		<div id="duelBody" class="rulesetBody">
+			<h3 class="subtitle">Use standard rules with the following changes.</h3>
+			<h3>Setup</h3>
+			<ul>
+				<li>Take out all green cards</li>
+				<li>Take out all blue specials (swappers, locks, plus ones)</li>
+				<li>The players must be Red and Yellow.</li>
+				<li>Hand size is five cards instead of seven.</li>
+			</ul>
+			<h3>Trading</h3>
+			<div>
+				If at any time you have a card of the other person’s color, immediately give it to them and draw a card.
 			</div>
-			<a class="logo" href="/index.html"><img src="/image/strogLogoBlack.png"></a>
 		</div>
 	</div>
-
-
-	<div class="container">
-		<div class="row">
-			<img id="turmoilHeader" src="/image/turmoilHeader.png">
+	
+	<!--
+	<div class="row ruleset" onclick="toggleVis('partnersBody')">
+		<h2>Partners - 6 or 8 players</h2>
+		<div id="partnersBody" class="rulesetBody">
+			<h3 class="subtitle">Use Standard Rules with the Following Changes.</h3>
+			<h3>Setup</h3>
+			<ul>
+				<li>Assemble a normal game of three or four players, then add one extra player to each team.</li>
+				<li>Each team has a color.</li>
+				<li>Each team must choose one player who can only play cards of that team’s color, and one player that can only play cards that aren’t that team’s color.</li>
+				<li>Each player gets their own hand and still takes turns separately.</li>
+			</ul>
 		</div>
-		<div class="row" id="instructionVideo">
-			<iframe width="560" height="315" src="https://www.youtube.com/embed/PLe_KrKwNCg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-		</div>
-		<br>
-		<div class="row">
-			<h2>If you want to know when the full release happens, enter your email here!</h2>
-			<form class="tickleForm" onsubmit="return tickleSubmit.apply(this,[]);">
-				<fieldset class="tickleFormFields tickleStyle">
-					<input name="userEmail" class="form-bit" autocapitalize="off" placeholder="Your email here" type="text" required>
-					<input name="note" class="form-bit" value="turmoil" type="text" style="display:none;">
-					<button type="submit" class="form-bit">
-					<span><i class="fa fa-refresh fa-spin hidden"></i><i class="fa fa-check"></i></span>
-					</button>
-					<div id="tickleSafeMessage">We won't spam you, or share your email with anyone, ever.</div>
-					<div id="tickleFailMessage"></div>
-				</fieldset>
-			</form>
-			<div id="tickleSuccessMessage">Thanks! We will email you when Turmoil is available!</div>
-		</div>
-		<br>
-		<div class="row">
-			<h1>More Ways to Play</h1>
-		</div>
-		<div class="row ruleset" onclick="toggleVis('duelBody')">
-			<h2>Duel - Two Players</h2>
-			<div id="duelBody" class="rulesetBody">
-				<h3 class="subtitle">Use standard rules with the following changes.</h3>
-				<h3>Setup</h3>
-				<ul>
-					<li>Take out all green cards</li>
-					<li>Take out all blue specials (swappers, locks, plus ones)</li>
-					<li>The players must be Red and Yellow.</li>
-					<li>Hand size is five cards instead of seven.</li>
-				</ul>
-				<h3>Trading</h3>
-				<div>
-					If at any time you have a card of the other person’s color, immediately give it to them and draw a card.
-				</div>
-			</div>
-		</div>
-		
-		<!--
-		<div class="row ruleset" onclick="toggleVis('partnersBody')">
-			<h2>Partners - 6 or 8 players</h2>
-			<div id="partnersBody" class="rulesetBody">
-				<h3 class="subtitle">Use Standard Rules with the Following Changes.</h3>
-				<h3>Setup</h3>
-				<ul>
-					<li>Assemble a normal game of three or four players, then add one extra player to each team.</li>
-					<li>Each team has a color.</li>
-					<li>Each team must choose one player who can only play cards of that team’s color, and one player that can only play cards that aren’t that team’s color.</li>
-					<li>Each player gets their own hand and still takes turns separately.</li>
-				</ul>
-			</div>
-		</div>
-		-->
-		<h2>More Coming Soon...</h2>
 	</div>
+	-->
+	<h2>More Coming Soon...</h2>
+	
 </div>
 
 </body>
