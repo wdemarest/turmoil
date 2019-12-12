@@ -80,6 +80,11 @@ nav a {
 	cursor: pointer;
 }
 
+#instructionVideo{
+	margin: 0 auto;
+	width: 560px;
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -343,7 +348,7 @@ $(document).ready( main );
 		<div class="row">
 			<img id="turmoilHeader" src="/image/turmoilHeader.png">
 		</div>
-		<div class="row">
+		<div class="row" id="instructionVideo">
 			<iframe width="560" height="315" src="https://www.youtube.com/embed/PLe_KrKwNCg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
 		<br>
@@ -367,9 +372,9 @@ $(document).ready( main );
 			<h1>More Ways to Play</h1>
 		</div>
 		<div class="row ruleset" onclick="toggleVis('duelBody')">
-			<h2>Duel - 2 players</h2>
+			<h2>Duel - Two Players</h2>
 			<div id="duelBody" class="rulesetBody">
-				<h3 class="subtitle">Use Standard Rules with the Following Changes.</h3>
+				<h3 class="subtitle">Use standard rules with the following changes.</h3>
 				<h3>Setup</h3>
 				<ul>
 					<li>Take out all green cards</li>
